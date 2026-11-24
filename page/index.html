@@ -82,70 +82,19 @@
             </div>
 
             <div class="flashcard-grid">
-                <button class="flashcard" type="button" aria-label="Revelar resposta">
-                    <span class="card-number">01 / 08</span>
-                    <span class="card-label">Pergunta</span>
-                    <span class="card-question">Qual era a função da instância CLI Host?</span>
-                    <span class="card-answer">Servir como máquina de administração para executar comandos e scripts da AWS CLI.</span>
-                    <span class="card-action">Clique para revelar a resposta ↻</span>
-                </button>
-
-                <button class="flashcard" type="button" aria-label="Revelar resposta">
-                    <span class="card-number">02 / 08</span>
-                    <span class="card-label">Pergunta</span>
-                    <span class="card-question">O que significa o erro InvalidAMIID.NotFound?</span>
-                    <span class="card-answer">Indica que o ID da AMI informado não foi encontrado na região utilizada. É necessário verificar o ID e a região.</span>
-                    <span class="card-action">Clique para revelar a resposta ↻</span>
-                </button>
-
-                <button class="flashcard" type="button" aria-label="Revelar resposta">
-                    <span class="card-number">03 / 08</span>
-                    <span class="card-label">Pergunta</span>
-                    <span class="card-question">Qual é a função de uma AMI no Amazon EC2?</span>
-                    <span class="card-answer">Fornecer a imagem usada como base para iniciar uma instância EC2, incluindo sistema operacional e configurações.</span>
-                    <span class="card-action">Clique para revelar a resposta ↻</span>
-                </button>
-
-                <button class="flashcard" type="button" aria-label="Revelar resposta">
-                    <span class="card-number">04 / 08</span>
-                    <span class="card-label">Pergunta</span>
-                    <span class="card-question">Para que serve o User Data em uma instância EC2?</span>
-                    <span class="card-answer">Executar comandos ou scripts durante a inicialização da instância, automatizando tarefas de configuração e instalação.</span>
-                    <span class="card-action">Clique para revelar a resposta ↻</span>
-                </button>
-
-                <button class="flashcard" type="button" aria-label="Revelar resposta">
-                    <span class="card-number">05 / 08</span>
-                    <span class="card-label">Pergunta</span>
-                    <span class="card-question">Qual foi a finalidade do uso do Nmap no laboratório?</span>
-                    <span class="card-answer">Verificar quais portas estavam acessíveis no endereço IP público da instância e auxiliar no diagnóstico de conectividade.</span>
-                    <span class="card-action">Clique para revelar a resposta ↻</span>
-                </button>
-
-                <button class="flashcard" type="button" aria-label="Revelar resposta">
-                    <span class="card-number">06 / 08</span>
-                    <span class="card-label">Pergunta</span>
-                    <span class="card-question">Onde foram consultados os registros de inicialização da instância?</span>
-                    <span class="card-answer">No arquivo /var/log/cloud-init-output.log, que permite verificar a saída dos processos executados durante a inicialização.</span>
-                    <span class="card-action">Clique para revelar a resposta ↻</span>
-                </button>
-
-                <button class="flashcard" type="button" aria-label="Revelar resposta">
-                    <span class="card-number">07 / 08</span>
-                    <span class="card-label">Pergunta</span>
-                    <span class="card-question">Quais tecnologias compunham o ambiente LAMP utilizado?</span>
-                    <span class="card-answer">Linux, Apache, MySQL ou MariaDB e PHP. No laboratório, a aplicação utilizava MariaDB como banco de dados.</span>
-                    <span class="card-action">Clique para revelar a resposta ↻</span>
-                </button>
-
-                <button class="flashcard" type="button" aria-label="Revelar resposta">
-                    <span class="card-number">08 / 08</span>
-                    <span class="card-label">Pergunta</span>
-                    <span class="card-question">Como foi validado o funcionamento da aplicação Café?</span>
-                    <span class="card-answer">A aplicação foi acessada pelo navegador, pedidos foram realizados e o histórico foi consultado para verificar o registro das informações.</span>
-                    <span class="card-action">Clique para revelar a resposta ↻</span>
-                </button>
-            </div>
+    <button class="flashcard" id="flashcard" type="button" aria-label="Revelar resposta">
+        <span class="card-number" id="card-number">01 / 08</span>
+        <span class="card-label" id="card-label">Pergunta</span>
+        <span class="card-question" id="card-question"></span>
+        <span class="card-answer" id="card-answer"></span>
+        <span class="card-action" id="card-action">Clique para revelar a resposta ↻</span>
+    </button>
+    <div class="flashcard-controls">
+        <button type="button" id="previous-card" disabled>← Anterior</button>
+        <span id="card-progress">1 de 8</span>
+        <button type="button" id="next-card">Próximo →</button>
+    </div>
+</div>
         </section>
     </main>
 
@@ -157,11 +106,91 @@
     </footer>
 
     <script>
-        document.querySelectorAll(".flashcard").forEach((card) => {
-            card.addEventListener("click", () => {
-                card.classList.toggle("flipped");
-            });
-        });
-    </script>
+const cards = [
+    {
+        question: "Qual era a função da instância CLI Host?",
+        answer: "Servir como máquina de administração para executar comandos e scripts da AWS CLI."
+    },
+    {
+        question: "O que significa o erro InvalidAMIID.NotFound?",
+        answer: "Indica que o ID da AMI informado não foi encontrado na região utilizada. É necessário verificar o ID e a região."
+    },
+    {
+        question: "Qual é a função de uma AMI no Amazon EC2?",
+        answer: "Fornecer a imagem usada como base para iniciar uma instância EC2, incluindo sistema operacional e configurações."
+    },
+    {
+        question: "Para que serve o User Data em uma instância EC2?",
+        answer: "Executar comandos ou scripts durante a inicialização da instância, automatizando tarefas de configuração e instalação."
+    },
+    {
+        question: "Qual foi a finalidade do uso do Nmap no laboratório?",
+        answer: "Verificar quais portas estavam acessíveis no endereço IP público da instância e auxiliar no diagnóstico de conectividade."
+    },
+    {
+        question: "Onde foram consultados os registros de inicialização da instância?",
+        answer: "No arquivo /var/log/cloud-init-output.log, que permite verificar a saída dos processos executados durante a inicialização."
+    },
+    {
+        question: "Quais tecnologias compunham o ambiente LAMP utilizado?",
+        answer: "Linux, Apache, MySQL ou MariaDB e PHP. No laboratório, a aplicação utilizava MariaDB como banco de dados."
+    },
+    {
+        question: "Como foi validado o funcionamento da aplicação Café?",
+        answer: "A aplicação foi acessada pelo navegador, pedidos foram realizados e o histórico foi consultado para verificar o registro das informações."
+    }
+];
+
+let currentCard = 0;
+
+const card = document.getElementById("flashcard");
+const question = document.getElementById("card-question");
+const answer = document.getElementById("card-answer");
+const number = document.getElementById("card-number");
+const label = document.getElementById("card-label");
+const action = document.getElementById("card-action");
+const progress = document.getElementById("card-progress");
+const previous = document.getElementById("previous-card");
+const next = document.getElementById("next-card");
+
+function showCard() {
+    const item = cards[currentCard];
+
+    question.textContent = item.question;
+    answer.textContent = item.answer;
+    number.textContent = String(currentCard + 1).padStart(2, "0") + " / 08";
+    progress.textContent = (currentCard + 1) + " de 8";
+
+    card.classList.remove("flipped");
+    label.textContent = "Pergunta";
+    action.textContent = "Clique para revelar a resposta ↻";
+
+    previous.disabled = currentCard === 0;
+    next.disabled = currentCard === cards.length - 1;
+}
+
+card.addEventListener("click", () => {
+    card.classList.toggle("flipped");
+    const flipped = card.classList.contains("flipped");
+    label.textContent = flipped ? "Resposta" : "Pergunta";
+    action.textContent = flipped ? "Clique para ver a pergunta ↻" : "Clique para revelar a resposta ↻";
+});
+
+previous.addEventListener("click", () => {
+    if (currentCard > 0) {
+        currentCard--;
+        showCard();
+    }
+});
+
+next.addEventListener("click", () => {
+    if (currentCard < cards.length - 1) {
+        currentCard++;
+        showCard();
+    }
+});
+
+showCard();
+</script>
 </body>
 </html>

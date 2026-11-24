@@ -262,3 +262,57 @@ footer p {
         min-height: 210px;
     }
 }
+
+
+/* Navegação dos flashcards */
+.flashcard-grid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+}
+
+.flashcard-grid .flashcard {
+    width: 100%;
+    max-width: 680px;
+    min-height: 260px;
+}
+
+.flashcard .card-answer {
+    display: none;
+}
+
+.flashcard.flipped .card-question {
+    display: none;
+}
+
+.flashcard.flipped .card-answer {
+    display: block;
+}
+
+.flashcard-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.flashcard-controls button {
+    padding: 10px 18px;
+    border: 1px solid #334b68;
+    border-radius: 8px;
+    background: #172a42;
+    color: #eaf3ff;
+    cursor: pointer;
+    font: inherit;
+}
+
+.flashcard-controls button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+#card-progress {
+    color: #a9bdd4;
+    font-size: 0.9rem;
+}
