@@ -1,0 +1,264 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --bg: #0b1120;
+    --surface: #111c30;
+    --surface-light: #17243a;
+    --border: #263650;
+    --text: #e5edf8;
+    --muted: #9aabc2;
+    --accent: #38bdf8;
+    --accent-dark: #0284c7;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.7;
+}
+
+.container {
+    width: min(1100px, 90%);
+    margin: 0 auto;
+}
+
+.hero {
+    padding: 85px 0 75px;
+    background: linear-gradient(135deg, #10233d, #0b1120 75%);
+    border-bottom: 1px solid var(--border);
+}
+
+.eyebrow {
+    display: inline-block;
+    color: var(--accent);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.hero h1 {
+    max-width: 850px;
+    margin: 18px 0 12px;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.subtitle {
+    color: var(--muted);
+    font-size: 1rem;
+}
+
+.tags,
+.tech-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.tags span,
+.tech-list span {
+    padding: 7px 13px;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: rgba(56, 189, 248, 0.07);
+    color: var(--accent);
+    font-size: 0.82rem;
+    font-weight: 600;
+}
+
+.section {
+    padding: 55px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.section h2 {
+    margin-bottom: 20px;
+    font-size: 1.65rem;
+    font-weight: 700;
+}
+
+.section > p {
+    max-width: 900px;
+    color: var(--muted);
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.info-card {
+    padding: 25px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-dark);
+}
+
+.number {
+    color: var(--accent);
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.info-card h3 {
+    margin: 10px 0;
+    font-size: 1.05rem;
+}
+
+.info-card p {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.flashcards-section {
+    border-bottom: none;
+}
+
+.section-heading {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.section-heading h2 {
+    margin: 8px 0;
+}
+
+.section-heading p {
+    color: var(--muted);
+}
+
+.flashcard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.flashcard {
+    position: relative;
+    display: flex;
+    min-height: 230px;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 28px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+    color: var(--text);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    transition: border-color 0.2s, background 0.2s;
+}
+
+.flashcard:hover {
+    border-color: var(--accent);
+    background: var(--surface-light);
+}
+
+.card-number {
+    position: absolute;
+    top: 18px;
+    right: 20px;
+    color: var(--muted);
+    font-size: 0.75rem;
+}
+
+.card-label {
+    margin-bottom: 12px;
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.card-question,
+.card-answer {
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.card-answer {
+    display: none;
+    color: var(--muted);
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+.card-action {
+    margin-top: 22px;
+    color: var(--accent);
+    font-size: 0.75rem;
+}
+
+.flashcard.flipped {
+    border-color: var(--accent-dark);
+    background: var(--surface-light);
+}
+
+.flashcard.flipped .card-question {
+    display: none;
+}
+
+.flashcard.flipped .card-answer {
+    display: block;
+}
+
+.flashcard.flipped .card-label {
+    font-size: 0;
+}
+
+.flashcard.flipped .card-label::after {
+    content: "Resposta";
+    font-size: 0.75rem;
+}
+
+footer {
+    padding: 30px 0;
+    border-top: 1px solid var(--border);
+    background: #080d18;
+    text-align: center;
+}
+
+footer p {
+    color: var(--muted);
+    font-size: 0.82rem;
+}
+
+@media (max-width: 700px) {
+    .hero {
+        padding: 60px 0;
+    }
+
+    .content-grid,
+    .flashcard-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section {
+        padding: 40px 0;
+    }
+
+    .flashcard {
+        min-height: 210px;
+    }
+}

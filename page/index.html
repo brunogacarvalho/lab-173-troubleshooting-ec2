@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lab 173 - Solução de problemas na criação de uma instância Amazon EC2 utilizando AWS CLI e ferramentas de diagnóstico.">
+    <title>Lab 173 | Troubleshooting EC2</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <span class="eyebrow">AWS re/Start · Escola da Nuvem</span>
+            <h1>Solução de problemas na criação de uma instância EC2</h1>
+            <p class="subtitle">Lab 173 · Troubleshooting the Creation of an EC2 Instance</p>
+            <div class="tags">
+                <span>Amazon EC2</span>
+                <span>AWS CLI</span>
+                <span>Diagnóstico</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="section">
+            <h2>Visão geral</h2>
+            <p>
+                Neste laboratório, foi utilizada a AWS CLI para criar uma instância
+                EC2 e solucionar falhas durante o provisionamento e a inicialização
+                de uma aplicação web. A atividade também envolveu o diagnóstico
+                de conectividade com Nmap e a verificação dos registros de inicialização.
+            </p>
+        </section>
+
+        <section class="section">
+            <h2>Atividades realizadas</h2>
+            <div class="content-grid">
+                <article class="info-card">
+                    <span class="number">01</span>
+                    <h3>Provisionamento via AWS CLI</h3>
+                    <p>Execução de script para criação da instância EC2 a partir da máquina CLI Host.</p>
+                </article>
+                <article class="info-card">
+                    <span class="number">02</span>
+                    <h3>Correção de erros</h3>
+                    <p>Identificação e correção de falha relacionada ao ID da AMI utilizada na criação da instância.</p>
+                </article>
+                <article class="info-card">
+                    <span class="number">03</span>
+                    <h3>Diagnóstico de rede</h3>
+                    <p>Verificação de portas com Nmap e análise dos registros de inicialização da instância.</p>
+                </article>
+                <article class="info-card">
+                    <span class="number">04</span>
+                    <h3>Validação da aplicação</h3>
+                    <p>Acesso à aplicação Café e realização de pedidos para verificar o funcionamento do sistema.</p>
+                </article>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2>Arquitetura e tecnologias</h2>
+            <div class="tech-list">
+                <span>Amazon EC2</span>
+                <span>AWS CLI</span>
+                <span>Amazon Linux</span>
+                <span>AMI</span>
+                <span>User Data</span>
+                <span>Apache</span>
+                <span>PHP</span>
+                <span>MariaDB</span>
+                <span>Nmap</span>
+            </div>
+        </section>
+
+        <section class="section flashcards-section">
+            <div class="section-heading">
+                <span class="eyebrow">Revisão de conteúdo</span>
+                <h2>Flashcards interativos</h2>
+                <p>Teste seus conhecimentos sobre os principais conceitos e procedimentos do laboratório.</p>
+            </div>
+
+            <div class="flashcard-grid">
+                <button class="flashcard" type="button" aria-label="Revelar resposta">
+                    <span class="card-number">01 / 08</span>
+                    <span class="card-label">Pergunta</span>
+                    <span class="card-question">Qual era a função da instância CLI Host?</span>
+                    <span class="card-answer">Servir como máquina de administração para executar comandos e scripts da AWS CLI.</span>
+                    <span class="card-action">Clique para revelar a resposta ↻</span>
+                </button>
+
+                <button class="flashcard" type="button" aria-label="Revelar resposta">
+                    <span class="card-number">02 / 08</span>
+                    <span class="card-label">Pergunta</span>
+                    <span class="card-question">O que significa o erro InvalidAMIID.NotFound?</span>
+                    <span class="card-answer">Indica que o ID da AMI informado não foi encontrado na região utilizada. É necessário verificar o ID e a região.</span>
+                    <span class="card-action">Clique para revelar a resposta ↻</span>
+                </button>
+
+                <button class="flashcard" type="button" aria-label="Revelar resposta">
+                    <span class="card-number">03 / 08</span>
+                    <span class="card-label">Pergunta</span>
+                    <span class="card-question">Qual é a função de uma AMI no Amazon EC2?</span>
+                    <span class="card-answer">Fornecer a imagem usada como base para iniciar uma instância EC2, incluindo sistema operacional e configurações.</span>
+                    <span class="card-action">Clique para revelar a resposta ↻</span>
+                </button>
+
+                <button class="flashcard" type="button" aria-label="Revelar resposta">
+                    <span class="card-number">04 / 08</span>
+                    <span class="card-label">Pergunta</span>
+                    <span class="card-question">Para que serve o User Data em uma instância EC2?</span>
+                    <span class="card-answer">Executar comandos ou scripts durante a inicialização da instância, automatizando tarefas de configuração e instalação.</span>
+                    <span class="card-action">Clique para revelar a resposta ↻</span>
+                </button>
+
+                <button class="flashcard" type="button" aria-label="Revelar resposta">
+                    <span class="card-number">05 / 08</span>
+                    <span class="card-label">Pergunta</span>
+                    <span class="card-question">Qual foi a finalidade do uso do Nmap no laboratório?</span>
+                    <span class="card-answer">Verificar quais portas estavam acessíveis no endereço IP público da instância e auxiliar no diagnóstico de conectividade.</span>
+                    <span class="card-action">Clique para revelar a resposta ↻</span>
+                </button>
+
+                <button class="flashcard" type="button" aria-label="Revelar resposta">
+                    <span class="card-number">06 / 08</span>
+                    <span class="card-label">Pergunta</span>
+                    <span class="card-question">Onde foram consultados os registros de inicialização da instância?</span>
+                    <span class="card-answer">No arquivo /var/log/cloud-init-output.log, que permite verificar a saída dos processos executados durante a inicialização.</span>
+                    <span class="card-action">Clique para revelar a resposta ↻</span>
+                </button>
+
+                <button class="flashcard" type="button" aria-label="Revelar resposta">
+                    <span class="card-number">07 / 08</span>
+                    <span class="card-label">Pergunta</span>
+                    <span class="card-question">Quais tecnologias compunham o ambiente LAMP utilizado?</span>
+                    <span class="card-answer">Linux, Apache, MySQL ou MariaDB e PHP. No laboratório, a aplicação utilizava MariaDB como banco de dados.</span>
+                    <span class="card-action">Clique para revelar a resposta ↻</span>
+                </button>
+
+                <button class="flashcard" type="button" aria-label="Revelar resposta">
+                    <span class="card-number">08 / 08</span>
+                    <span class="card-label">Pergunta</span>
+                    <span class="card-question">Como foi validado o funcionamento da aplicação Café?</span>
+                    <span class="card-answer">A aplicação foi acessada pelo navegador, pedidos foram realizados e o histórico foi consultado para verificar o registro das informações.</span>
+                    <span class="card-action">Clique para revelar a resposta ↻</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Lab 173 · Formação em Computação em Nuvem (AWS re/Start)</p>
+            <p>Escola da Nuvem · Professor Raphael Ohlsen</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll(".flashcard").forEach((card) => {
+            card.addEventListener("click", () => {
+                card.classList.toggle("flipped");
+            });
+        });
+    </script>
+</body>
+</html>
