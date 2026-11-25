@@ -1,4 +1,4 @@
-# Lab 173 - Solução de problemas na criação de uma instância EC2
+# Lab 10 - Lab 173 - Solução de problemas na criação de uma instância EC2
 
 ## Visão geral
 
